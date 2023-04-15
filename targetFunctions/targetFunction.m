@@ -1,4 +1,5 @@
 global executionCount;
+
 executionCount = 0;
 
 function functionValue = targetFunction(point)
@@ -9,7 +10,7 @@ function functionValue = targetFunction(point)
   global executionCount;
   executionCount = executionCount + 1;
 
-  quadX = point * point;
-  functionValue = sin((quadX + point - 4)/5) + \
-                  cosh((quadX * point + 3 * quadX + 5 * point + 8)/(3*point + 9)) - 1.0;
+  squarePoint = point * point;
+  functionValue = sin((squarePoint + point - 4)/5) + \
+                  cosh((squarePoint * point + 3 * squarePoint + 5 * point + 8)/(3*point + 9)) - 1.0;
 endfunction
