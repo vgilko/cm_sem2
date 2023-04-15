@@ -16,8 +16,8 @@ a = -1;
 b = 0;
 epsilon = [1e-2,1e-4,1e-6];
 
-debug = true;
-needPrintPlot = true;
+debug = false;
+needPrintPlot = false;
 methodName = 'radixMethod';
 method = @goldenSectionMethod;
 
@@ -32,14 +32,11 @@ printHeader();
 for index = 1:length(epsilon)
     currentEpsilon = epsilon(index);
 
-    [point, functionValue, steps] = method(a,b,currentEpsilon);
+    [point, functionValue] = method(a,b,currentEpsilon);
 
-    printSteps(steps, debug, methodName);
     printRow(index, point, functionValue, currentEpsilon, executionCount);
     
-    if (needPrintPlot)
-        printPlot(a, b, steps, [point, functionValue], sprintf("Epsilon: %f", currentEpsilon), methodName);
-    endif
-
     executionCount = 0;
+
+    pause;
 endfor
