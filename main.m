@@ -2,23 +2,24 @@ source("methods/goldenSectionMethod.m");
 source("methods/radixMethod.m");
 
 source("targetFunctions/targetFunction.m");
-
-source("prints/printPlot.m");
 source("prints/printSteps.m");
 source("prints/printRow.m");
 source("prints/printHeader.m");
+source("prints/printPoint.m");
+source("prints/printFunctionPlot.m");
 
-
-
+global targFunction;
 global executionCount;
+global isDebug;
 
 a = -1;
 b = 0;
 epsilon = [1e-2,1e-4,1e-6];
 
-debug = false;
-needPrintPlot = false;
-methodName = 'radixMethod';
+isDebug = false;
+methodName = 'goldenSectionMethod';
+targFunction = @targetFunction;
+
 method = @goldenSectionMethod;
 
 if (strcmp(methodName, 'radixMethod') == 1)
@@ -30,13 +31,20 @@ endif
 printf("Current method: %s\n", methodName);
 printHeader();
 for index = 1:length(epsilon)
+    printFunctionPlot(a,b);
+
     currentEpsilon = epsilon(index);
 
     [point, functionValue] = method(a,b,currentEpsilon);
 
     printRow(index, point, functionValue, currentEpsilon, executionCount);
+
+    printPoint(point, functionValue, 'r', '*');
     
     executionCount = 0;
 
-    pause;
+    if (isDebug)
+        pause;
+        close;
+    endif
 endfor

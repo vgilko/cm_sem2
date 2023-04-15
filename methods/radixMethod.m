@@ -1,5 +1,3 @@
-source("targetFunctions/targetFunction.m");
-source("prints/printFunctionPlot.m");
 source("prints/printPoint.m");
 source("utils/isValidPoint.m");
 
@@ -8,11 +6,11 @@ function [currentPoint, currentFunctionValue] = radixMethod(a,b,epsilon)
     if (nargin < 1)
         return;
     endif
-
-    printFunctionPlot(a,b);
+    
+    global targFunction;
 
     currentPoint = a;
-    currentFunctionValue = targetFunction(currentPoint);
+    currentFunctionValue = targFunction(currentPoint);
     printPoint(currentPoint, currentFunctionValue, 'g', 'o');
 
     delta = (b - a) / 4;
@@ -20,7 +18,7 @@ function [currentPoint, currentFunctionValue] = radixMethod(a,b,epsilon)
     while (abs(delta) > epsilon)
         do 
             nextPoint = currentPoint + delta;
-            nextFunctionValue = targetFunction(nextPoint);
+            nextFunctionValue = targFunction(nextPoint);
             printPoint(nextPoint, nextFunctionValue, 'b', '*');
 
             if (nextFunctionValue >= currentFunctionValue)
@@ -35,6 +33,4 @@ function [currentPoint, currentFunctionValue] = radixMethod(a,b,epsilon)
 
         delta = -delta / 4;
     endwhile
-
-    close;
 endfunction
