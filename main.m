@@ -14,9 +14,10 @@ global isDebug;
 
 a = -1;
 b = 0;
-epsilon = [1e-2,1e-4,1e-6];
+% epsilon = [1e-2,1e-4,1e-6];
+epsilon = [1e-6];
 
-isDebug = false;
+isDebug = true;
 methodName = 'goldenSectionMethod';
 targFunction = @targetFunction;
 
@@ -39,7 +40,9 @@ for index = 1:length(epsilon)
 
     printRow(index, point, functionValue, currentEpsilon, executionCount);
 
-    printPoint(point, functionValue, 'r', '*');
+    % printPoint(point, functionValue, 'g', '*');
+    plot(point, functionValue, 'ro', 'Marker', 's', 'MarkerSize', 10, 'MarkerFaceColor', 'g');
+
     
     executionCount = 0;
 

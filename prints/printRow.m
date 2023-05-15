@@ -3,5 +3,7 @@ function printRow(index, point, functionValue, epsilon, execCount)
         return;
     endif
 
-    printf(" %d   | %f | %f | %f | %d\n", index, point, functionValue, epsilon, execCount);
+    output_precision(14);
+    
+    printf(" %d   | %.10f | %.10f | %.10f | %d\n", index, point, functionValue, epsilon, execCount);
 endfunction

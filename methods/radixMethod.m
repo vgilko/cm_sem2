@@ -21,13 +21,21 @@ function [currentPoint, currentFunctionValue] = radixMethod(a,b,epsilon)
             nextFunctionValue = targFunction(nextPoint);
             printPoint(nextPoint, nextFunctionValue, 'b', '*');
 
-            if (nextFunctionValue >= currentFunctionValue)
+            % if (nextFunctionValue >= currentFunctionValue)
+            %     break;
+            % endif
+
+            % currentPoint = nextPoint;
+            % currentFunctionValue = nextFunctionValue;
+            % printPoint(currentPoint, currentFunctionValue, 'g', 'o');
+
+            if (currentFunctionValue > nextFunctionValue)
+                currentPoint = nextPoint;
+                currentFunctionValue = nextFunctionValue;
+                printPoint(currentPoint, currentFunctionValue, 'g', 'o');
+            else
                 break;
             endif
-
-            currentPoint = nextPoint;
-            currentFunctionValue = nextFunctionValue;
-            printPoint(currentPoint, currentFunctionValue, 'g', 'o');
 
         until (!isValidPoint(currentPoint,a,b));
 
