@@ -13,4 +13,5 @@ function functionValue = targetFunction(point)
   squarePoint = point * point;
   functionValue = sin((squarePoint + point - 4)/5) + \
                   cosh((squarePoint * point + 3 * squarePoint + 5 * point + 8)/(3*point + 9)) - 1.0;
-endfunction
+  % functionValue = (point + 0.001)^8;
+endfunction 

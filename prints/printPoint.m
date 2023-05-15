@@ -5,7 +5,7 @@ function printPoint(point, functionValue, pointColor, marker)
     endif
 
     hold on;
-    % plot(point, functionValue, 'ro', 'Marker', marker, 'MarkerSize', 5, 'MarkerFaceColor', pointColor);
-    plot(point, functionValue, 'ro', 'Marker', marker, 'MarkerSize', 5);
-    pause(0.5);
+    % plot(point, functionValue, 'ro', 'Marker', marker, 'MarkerSize', 10, 'MarkerFaceColor', pointColor);
+    plot(point, functionValue, 'ro', 'Marker', marker, 'MarkerSize', 10);
+    pause(5);
 endfunction
