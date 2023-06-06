@@ -1,6 +1,7 @@
 function printPoint(point, functionValue, pointColor, marker)
     global isDebug;
     global withPause;
+    global pauseTime;
 
     if (nargin != 4 || !isDebug)
         return;
@@ -10,6 +11,6 @@ function printPoint(point, functionValue, pointColor, marker)
     plot(point, functionValue, 'ro', 'Marker', marker, 'MarkerSize', 10);
     
     if (withPause)
-        pause(5);
+        pause(pauseTime);
     endif
 endfunction
