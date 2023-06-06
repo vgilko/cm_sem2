@@ -10,8 +10,10 @@ function [x, y] = newtonMethod(a, b, epsilon)
     global targFunction;
 
     % [x1, x2] = goldenSectionSearch(a, b, (b - a) / 7);
-    [x1, x2] = goldenSectionSearch(a, b, 0.25);
-    x_star = (x1 + x2) / 2;
+    % [x1, x2] = goldenSectionSearch(a, b, 0.25);
+
+    % x_star = (x1 + x2) / 2;
+    x_star = (a + b) / 2;
 
     h = 12 * epsilon;
 

@@ -24,7 +24,7 @@ a = -1;
 b = 0;
 % epsilon = [1e-2,1e-4,1e-6];
 epsilon = [1e-6];
-pauseTime = 1;
+pauseTime = 3;
 
 isDebug = true;
 withPause = true;
@@ -40,22 +40,25 @@ for index = 1:length(epsilon)
     currentEpsilon = epsilon(index);
 
     if (useFminbnd)
+        [x_star, f_star] = fminbnd(targFunction, a, b, optimset('Display', 'iter', 'TolX', epsilon));
+        p2 = plot(x_star, f_star, 'r.');
 
+        printRow(index, x_star, f_star, currentEpsilon, executionCount);
     else
         [point, functionValue] = method(a, b, currentEpsilon);
 
-    printRow(index, point, functionValue, currentEpsilon, executionCount);
+        printRow(index, point, functionValue, currentEpsilon, executionCount);
 
-    hold on;
-    plot(point, functionValue, 'ro', 'Marker', 's', 'MarkerSize', 10, 'MarkerFaceColor', 'g');
+        hold on;
+        plot(point, functionValue, 'ro', 'Marker', 's', 'MarkerSize', 10, 'MarkerFaceColor', 'g');
 
-    executionCount = 0;
+        executionCount = 0;
 
-    if (isDebug)
-        pause;
-        close;
+        if (isDebug)
+            pause;
+            close;
+        endif
+
     endif
-    endif
-
 
 endfor
